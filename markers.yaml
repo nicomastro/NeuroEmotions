@@ -1,0 +1,28 @@
+workdir: /tmp
+
+datagrabber:
+  kind: PatternDataGrabber
+  datadir: /home/gonzalo/repos/neuroImaging/ml-chunks
+  
+  patterns:
+    BOLD:
+      pattern: sub-06_task-rest_desc-preproc_bold_chunk{number}.nii.gz
+      space: MNI152NLin2009cAsym
+  replacements:
+    - number
+  types: 
+    - BOLD
+markers:
+  - name: parccortical-Schaefer100x17
+    kind: FunctionalConnectivityParcels
+    parcellation: 
+        - Schaefer100x17
+    cor_method: correlation
+    cor_method_params:
+      empirical: true
+    masks:
+      - inherit
+    
+storage:
+  kind: HDF5FeatureStorage
+  uri: "/home/gonzalo/repos/neuroImaging/Features/ds003548/ds003548_FC.hdf5"
