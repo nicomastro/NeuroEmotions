@@ -22,7 +22,13 @@ markers:
       empirical: true
     masks:
       - inherit
-    
+  - name: ReHo-CogAR-5mm
+    kind: ReHoSpheres
+    coords: "CogAR"
+    radius: 5
+    using: afni
+    masks: 
+      - inherit    
 storage:
   kind: HDF5FeatureStorage
   uri: "/home/gonzalo/repos/neuroImaging/Features/ds003548/ds003548_FC.hdf5"
