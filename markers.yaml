@@ -2,33 +2,43 @@ workdir: /tmp
 
 datagrabber:
   kind: PatternDataGrabber
-  datadir: /home/gonzalo/repos/neuroImaging/ml-chunks
+  datadir: /home/gruarte/repos/NeuroEmotions/ml-chunks
   
   patterns:
     BOLD:
-      pattern: sub-06_task-rest_desc-preproc_bold_chunk{number}.nii.gz
+      pattern: sub-{subject}_task-emotionalfaces_run-{run}_space-MNI152NLin2009cAsym_res-2_desc-preproc_bold_chunk{chunk}.nii.gz
       space: MNI152NLin2009cAsym
   replacements:
-    - number
+    - subject
+    - run
+    - chunk
   types: 
     - BOLD
 markers:
-  - name: parccortical-Schaefer100x17
+  - name: FC-Parcellation-Schaefer100x17
     kind: FunctionalConnectivityParcels
     parcellation: 
         - Schaefer100x17
     cor_method: correlation
     cor_method_params:
       empirical: true
-    masks:
-      - inherit
   - name: ReHo-CogAR-5mm
     kind: ReHoSpheres
     coords: "CogAR"
     radius: 5
     using: afni
-    masks: 
-      - inherit    
+  - name: ReHO-Parcellation-Schaefer100x17
+    kind: ReHoParcels
+    parcellation: 
+        - Schaefer100x17
+    using: afni
+  - name: FC-CogAR-5mm
+    kind: FunctionalConnectivitySpheres
+    coords: "CogAR"
+    cor_method: correlation
+    cor_method_params:
+      empirical: true
+    radius: 5
 storage:
   kind: HDF5FeatureStorage
-  uri: "/home/gonzalo/repos/neuroImaging/Features/ds003548/ds003548_FC.hdf5"
+  uri: "/home/gruarte/repos/NeuroEmotions/Features/ds003548/ds003548_FC.hdf5"
