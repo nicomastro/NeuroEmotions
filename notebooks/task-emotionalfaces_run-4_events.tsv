@@ -1,0 +1,15 @@
+onset	duration	trial_type
+0	30	happy
+30	30	angry
+60	30	neutral
+90	30	blank
+120	30	sad
+150	30	scrambled
+180	30	happy
+210	30	angry
+240	30	neutral
+270	30	blank
+300	30	sad
+330	30	scrambled
+360	10	end
+
