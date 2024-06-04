@@ -3,7 +3,7 @@
 
 # Introducción:
 
-* Hipótesis: A partir del refinamiento de señales BOLD mediante ALFF(*) sobre tareas activas, se puede predecir, con una performance superior a la chance estimada empíricamente, fenómenos de decodificación visual con distinto grado de complejidad: Desde la detección facial a la percepción de una emoción. Nos centramos en esta última.
+* Hipótesis: A partir del refinamiento de señales BOLD mediante ~~ALFF~~ ReHo/Functional Connectivity(*) sobre tareas activas, se puede predecir, con una performance superior a la chance estimada empíricamente, fenómenos de decodificación visual con distinto grado de complejidad: Desde la detección facial a la percepción de una emoción. Nos centramos en esta última.
 
 * Nos insipiramos en un trabajo que también analiza la percepción emociones a partir de señales fMRI: *Localizing Brain Function Based on Full Multivariate Activity Patterns: The Case of Visual Perception and Emotion Decoding* https://www.biorxiv.org/content/10.1101/2021.04.04.438425v3
 
@@ -30,7 +30,7 @@ El dataset planteado en el paper, el cual tiene derivatives ya computadas de fmr
 
 
 * Por cada sujeto, consideramos la señal BOLD de cada run y la agrupamos por bloque. Obtenemos así, dos bloques por emoción con su respectiva señal BOLD la cual contiene 15 volumenes.
-* Dado un ROI/parcellation a definir aplicamos ALFF(*) a cada señal y se obtiene un feature vector para cada una.
+* Dado un ROI/parcellation a definir aplicamos ~~ALFF~~ReHo/Functional Connectivity(*) a cada señal y se obtiene un feature vector para cada una.
 * Tendríamos 10 muestras por emoción y por sujeto, un total de 160 por clase.
 
 ---
@@ -58,9 +58,8 @@ Vamos a entrenar dos familias de modelos (SVM y RandomForest) para implementar u
 
 
 ---
-Dudas (*):
-* No nos queda claro cual podría ser la feature más conveniente para este contexto. Proponemos ALLF, pero a priori conectividad funcional sería interesante también.
-* Tampoco cual parcellation tomar.
+(*):
+* Luego del último intercambio por mail, acordamos tomar ReHo y FC usando: Parcellation-Schaefer100x17 y coordenadas CogAR-5mm
 
 
 
